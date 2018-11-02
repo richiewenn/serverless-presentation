@@ -1,0 +1,11 @@
+{
+  "name": "aws_sls_functions",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.344.0",
+    "uuid": "^3.3.2",
+    "serverless-dynamodb-local": "^0.2.35",
+    "serverless-offline": "^3.30.0"
+  }
+}
