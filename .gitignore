@@ -200,3 +200,5 @@ buildNumber.properties
 
 demos/aws_sls_functions/\.dynamodb/
 
+
+\.tmp/

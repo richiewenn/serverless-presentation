@@ -1,18 +1,59 @@
 background-image: url(https://image.ibb.co/gD48RV/serverlessallthethings.png)
 ---
-# Serverless
-- BaaS
-- FaaS
+# SaaS
+Software as a Service
+--
+
+- Buy, don't deploy
+- Google Apps, Dropbox, Stripe (payments)
+---
+# IaaS
+Infrastructure as a Service
+--
+
+- Assemble before deploy
+- Cloud servers (e.g. VMs with Ubuntu)
+- Direct access to servers, storage,...
+- Exoscale, parts of AWS
+---
+# PaaS
+Platform as a Service
+--
+
+- Abstracts much of the work of dealing with servers
+- Heroku, OpenShift
 ---
 # BaaS
+Backend as a Service
+--
+
 - Cloud accessible DBs (Firebase)
-- Auth Services (Auth0, AWS Cognito) 
+- Auth Services (Auth0, AWS Cognito)
+???
+- High available
+- Barely any configuration 
+- Can scale almost infinitely 
 ---
 # FaaS
+Function as a Service
+--
+
 - Small code
 - Stateless container
 - Event triggered
 - Managed by 3rd party
+---
+# Serverless
+- BaaS
+- FaaS
+---
+class: center, middle
+# What it is all about?
+---
+class: center, middle
+# Getting shit done.
+???
+No DevOps e.i. NoOps
 ---
 # 3 Tier Example
 ![ps.svg](https://martinfowler.com/articles/serverless/ps.svg)
@@ -31,6 +72,8 @@ background-image: url(https://image.ibb.co/gD48RV/serverlessallthethings.png)
 # Message-driven App
 ## Classic
 ![cp.svg](https://martinfowler.com/articles/serverless/cp.svg)
+--
+
 ## Serverless
 ![scp.svg](https://martinfowler.com/articles/serverless/scp.svg)
 ---
@@ -46,21 +89,35 @@ class: center, middle
 ![2lfvkz.jpg](https://i.imgflip.com/2lfvkz.jpg)
 ---
 # Lambda
+--
+
 - Comes from Lambda calculus (1930s)
+--
+
 - Formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution.
 ---
 # Lambda
+--
+
 - Functions: 1 -> 1
+--
+
 - and nothing else
+--
+
 - (λx.λy.(λz.(λx.z x) (λy.z y)) (x y))
 ---
 # What?
+--
+
 - x - variable
 - M - lambda term
 - (λx.M) - function definition
 - (M N) - apply a function to an argument
 ---
 # Where are all the stuff?
+--
+
 - TRUE
 - FALSE
 - IF-ELSE 
@@ -68,7 +125,9 @@ class: center, middle
 - BINARY OPERATORS
 - NUMBERS???
 ---
-# Where are all the stuff?
+# Here you go
+--
+
 - TRUE := λx.λy.x
 - FALSE := λx.λy.y
 - AND := λp.λq.p q p
@@ -84,19 +143,26 @@ class: center, middle
 - 1 := λf.λx.f x
 - 2 := λf.λx.f (f x)
 - 3 := λf.λx.f (f (f x))
+- 4 := λf.λx.f (f (f (f x)))
 ---
 class: center, middle
 # Nah, this is all just academic nonsense right?
 ---
 class: center, middle
+# Well
+---
+class: center, middle
 # Let me show you some JS
+---
+class: center, middle
+# Demo time!
 ---
 # What is lambda today?
 - `() => {}`
 - AWS FaaS is called Lambda
 ---
 # Function State
-- Not stateless
+- Stateful, but
 - External state (AWS S3, DB)
 ---
 # Startup Latency

@@ -3,7 +3,7 @@
 @import 'https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic';
 
 body {
-  font-family: 'Roboto Mono';
+  font-family: 'Roboto';
 }
 
 h1, h2, h3 {
@@ -15,6 +15,9 @@ h1, h2, h3 {
 li {
   font-size: 3rem !important;
   padding-top: 0.5rem;
+}
+p {
+  font-size: 3rem;
 }
 a {
   color: #AE81FF;
@@ -43,9 +46,12 @@ html {
 }
 
 img {
-  max-width: 80vw;
+  max-width: 80%;
   max-height: 80%;
   background: #eeeeee;
+}
+.remark-slide-number {
+  display: none;
 }
 
 .img-center p {
