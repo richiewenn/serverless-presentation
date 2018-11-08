@@ -13,7 +13,9 @@ exports.screenshot = async (req, res) => {
   const url = req.query.url;
 
   if (!url) {
-    return res.status(400).send('Please provide URL as GET parameter, for example: <a href="?url=https://mall.cz">?url=https://mall.cz</a>');
+    return res
+      .status(400)
+      .send('Please provide URL as GET parameter, for example: <a href="?url=https://mall.cz">?url=https://mall.cz</a>');
   }
 
   if (!page) {

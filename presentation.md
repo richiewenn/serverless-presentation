@@ -1,3 +1,7 @@
+class: center, middle
+# Sls
+by Richie
+---
 background-image: url(https://image.ibb.co/gD48RV/serverlessallthethings.png)
 ---
 # SaaS
@@ -54,6 +58,12 @@ class: center, middle
 # Getting shit done.
 ???
 No DevOps e.i. NoOps
+---
+class: center, middle
+![2lsvp5.jpg](https://i.imgflip.com/2lsvp5.jpg)
+---
+# #NoOps
+- There is always Ops, you just outsource it
 ---
 # 3 Tier Example
 ![ps.svg](https://martinfowler.com/articles/serverless/ps.svg)
@@ -194,13 +204,11 @@ class: center, middle
 class: center, middle
 # Time to Recover -> Time to Start
 ---
-# #NoOps
-- There is always Ops, you just outsource it
----
 # Costs
 - Economy of Scale effect
 - Reduced development cost
 - Scaling costs
+- Never pay for idle
 ---
 # AWS Pricing
 - $0.0000002 per 100ms @ 128MB
@@ -244,7 +252,7 @@ class: center, middle
 - IOT GW does not care about size
 ---
 # Let clients connect to "back-end" resources
-- And use 1000s of CPUs for free
+And use 1000s of CPUs for free
 ---
 # Nice Right?
 - Rainbows
@@ -310,7 +318,7 @@ class: center, middle
 ---
 # It's all still kinda new
 - Not many patterns
-- Not many best practicies
+- Not many best practices
 - Incomplete tooling
 ---
 class: center, middle
