@@ -1,33 +1,10 @@
 class: center, middle
-# Sls
-by Richie
----
-background-image: url(https://image.ibb.co/gD48RV/serverlessallthethings.png)
----
-# SaaS
-Software as a Service
---
-
-- Buy, don't deploy
-- Google Apps, Dropbox, Stripe (payments)
----
-# IaaS
-Infrastructure as a Service
---
-
-- Assemble before deploy
-- Cloud servers (e.g. VMs with Ubuntu)
-- Direct access to servers, storage,...
-- Exoscale, parts of AWS
----
-# PaaS
-Platform as a Service
---
-
-- Abstracts much of the work of dealing with servers
-- Heroku, OpenShift
+# Serverless Applications
+by Richard Vašek
 ---
 # BaaS
+--
+
 Backend as a Service
 --
 
@@ -39,6 +16,8 @@ Backend as a Service
 - Can scale almost infinitely 
 ---
 # FaaS
+--
+
 Function as a Service
 --
 
@@ -48,22 +27,12 @@ Function as a Service
 - Managed by 3rd party
 ---
 # Serverless
+--
+
 - BaaS
 - FaaS
----
-class: center, middle
-# What it is all about?
----
-class: center, middle
-# Getting shit done.
 ???
-No DevOps e.i. NoOps
----
-class: center, middle
-![2lsvp5.jpg](https://i.imgflip.com/2lsvp5.jpg)
----
-# #NoOps
-- There is always Ops, you just outsource it
+Kombinace BaaS a FaaS
 ---
 # 3 Tier Example
 ![ps.svg](https://martinfowler.com/articles/serverless/ps.svg)
@@ -87,122 +56,17 @@ class: center, middle
 ## Serverless
 ![scp.svg](https://martinfowler.com/articles/serverless/scp.svg)
 ---
-class: center, middle
-# Lambda Functions
----
-class: center, middle
-# WTF that even means?
----
-class: center, middle
-# After this, there is no turning back.
----
-![2lfvkz.jpg](https://i.imgflip.com/2lfvkz.jpg)
----
-# Lambda
---
-
-- Comes from Lambda calculus (1930s)
---
-
-- Formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution.
----
-# Lambda
---
-
-- Functions: 1 -> 1
---
-
-- and nothing else
---
-
-- (λx.λy.(λz.(λx.z x) (λy.z y)) (x y))
----
-# What?
---
-
-- x - variable
-- M - lambda term
-- (λx.M) - function definition
-- (M N) - apply a function to an argument
----
-# Where are all the stuff?
---
-
-- TRUE
-- FALSE
-- IF-ELSE 
-- FOR LOOP
-- BINARY OPERATORS
-- NUMBERS???
----
-# Here you go
---
-
-- TRUE := λx.λy.x
-- FALSE := λx.λy.y
-- AND := λp.λq.p q p
-- OR := λp.λq.p p q
-- NOT := λp.p FALSE TRUE
-- IFTHENELSE := λp.λa.λb.p a b
----
-class: center, middle
-# Numbers?
----
-# Church numerals
-- 0 := λf.λx.x
-- 1 := λf.λx.f x
-- 2 := λf.λx.f (f x)
-- 3 := λf.λx.f (f (f x))
-- 4 := λf.λx.f (f (f (f x)))
----
-class: center, middle
-# Nah, this is all just academic nonsense right?
----
-class: center, middle
-# Well
----
-class: center, middle
-# Let me show you some JS
----
-class: center, middle
-# Demo time!
----
-# What is lambda today?
-- `() => {}`
-- AWS FaaS is called Lambda
----
-# Function State
-- Stateful, but
-- External state (AWS S3, DB)
----
-# Startup Latency
-- Can be from ms to s
-- Cold
-  - Create new container
-  - (Run JIT)
-- Warm
-  - Reusing instance
----
 # API Gateways
 ![ag.svg](https://martinfowler.com/articles/serverless/ag.svg)
 - Routing requests
-- Authentication
+- Authorization
 - Input validation
 - Response code mapping
----
-class: center, middle
-# GCloud Demo
----
-# PaaS and Serverless
-- If your PaaS can efficiently start instances in 20ms that run for half a second, then call it serverless. 
 ---
 # Scaling FaaS
 - Automatically managed
 - Transparent
 - Fine grained
----
-class: center, middle
-# Time to Recover -> Time to Start
 ---
 # Costs
 - Economy of Scale effect
@@ -215,10 +79,10 @@ class: center, middle
 - $0.20 per 1 million requests
 - First 1M per month are free
 ---
-# Optimalization
+# Optimization
 1. You can clearly see which function is slow
 2. Optimize 1s to 200ms
-3. Imidiately pay 80% less
+3. Immediately pay 80% less
 ---
 # Fine graded scaling
 - Occasional requests
@@ -236,7 +100,7 @@ class: center, middle
 ---
 # Design around services
 - Play arbitrage with different charging models
-  - Lambda: #requests, time, memory
+  - Lambda: #requests, time, memory, transfer
   - API GW: #requests, transfer
   - S3: transfer
   - Cognito: #users
@@ -247,20 +111,13 @@ class: center, middle
   2. User uploads to S3 directly
   3. You don't pay CPU time for S3, just transfer
 ---
-# Cognito and IOT GW
-- State in Cognito
-- IOT GW does not care about size
----
-# Let clients connect to "back-end" resources
-And use 1000s of CPUs for free
----
 # Nice Right?
 - Rainbows
 - Unicorns
 - All things shiny so far
---
-
-- About to get slapped around the face by the wet fish of reality
+---
+class: center, middle
+# But
 ---
 # Vendor control
 - System downtime
@@ -273,10 +130,17 @@ And use 1000s of CPUs for free
 - Hard to migrate to different vendor
 - Multi-cloud is expensive
 ---
+# Startup Latency
+- Can be from ms to s
+- Cold
+  - Create new container
+  - (Run JIT)
+- Warm
+  - Reusing running instance
+---
 # Security concerns
 - Using BaaS database from client
 - IAM policies
-- Identity-Based Policies
 ---
 # DoS yourself
 1. AWS lambda instances limit is per AWS account (1000 by default)
@@ -284,37 +148,22 @@ And use 1000s of CPUs for free
 3. Run load test on test env
 4. DoS production
 ---
-# Execution duration
-- Limited to ~5 minutes
-- No signs of changing it
----
-# Startup latency
-- Cold starts
-- Significant concern for JVM
----
-# Memmory vs CPU
-- Need 50MB
+# Memory vs CPU
+- Need 50MB RAM
+--
+
 - So let's configure 128MB right?
+--
+
 - Wrong 
 ---
 # GCloud
 ![Screenshot-2018-11-01-at-23-08-18.png](https://image.ibb.co/j93U8L/Screenshot-2018-11-01-at-23-08-18.png)
 ---
-# AWS
-- No CPU guaranties
-- Experience similar to GCloud
----
 # Testing
 - Unit testing is easy
 - Integration testing is hard
 - Cloud-based testing not local
-- Should we switch to cloud IDE?
----
-# Over-ambitious API gateways
-1. You pay per request not CPU time
-2. You put a lot of logic to API gateway
-3. Yaml hell
-4. Hard to maintain
 ---
 # It's all still kinda new
 - Not many patterns
@@ -322,10 +171,4 @@ And use 1000s of CPUs for free
 - Incomplete tooling
 ---
 class: center, middle
-# Serverless FW Demo
-???
-- `yarn global add serverless`
-- `serverless create --template aws-nodejs --path aws_sls_functions`
-- `cd aws_sls_functions`
-- `yarn init -y`
-- `yarn add --dev serverless-offline serverless-dynamodb-local`
+# Demo Time
