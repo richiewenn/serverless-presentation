@@ -1,6 +1,6 @@
 class: center, middle
 # Serverless Applications
-by Richard Vašek
+Richard Vasek
 ---
 # BaaS
 --
